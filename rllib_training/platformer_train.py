@@ -6,7 +6,6 @@ from ray.rllib.algorithms.ppo import PPO, PPOConfig
 from patformer_env import PlatformerAgent
 # from custom_visionnet import CustomVisionNetwork
 from custom_lstm_visionnet import CustomVisionNetwork
-from rollout_reward_callback import RolloutRewardTracker
 # from curriculum import curriculum_config, curriculum_fn, CurriculumCallback, single_task, default_task
 
 local_mode = False
@@ -14,7 +13,7 @@ ray.init(local_mode=local_mode)
 
 args = argparse.Namespace
 args.env = "PlatformerAgent"
-args.file_name = "E:\Projects\hedgehogs\\builds\win\\hedgehogs.exe"
+args.file_name = "..\\builds\win\\hedgehogs.exe"
 # args.file_name = None
 result_dir = "E:\\Projects\\hedgehogs\\rllib_training\\results\\"
 # args.file_name = None
@@ -74,7 +73,6 @@ config = (
     .multi_agent(policies=policies, policy_mapping_fn=policy_mapping_fn)
     .resources(num_gpus=1)
     .debugging(log_level="INFO")
-    # .callbacks(RolloutRewardTracker)
     # .callbacks(CurriculumCallback)
 )
 stop = {

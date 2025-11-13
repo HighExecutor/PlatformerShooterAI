@@ -17,7 +17,7 @@ except:
 ray.init(local_mode=True)
 
 env = "PlatformerAgent"
-file_name = "E:\Projects\hedgehogs\\builds\win\\hedgehogs.exe"
+file_name = "..\\builds\win\\hedgehogs.exe"
 
 tune.register_env(
     "PlatformerAgent",
