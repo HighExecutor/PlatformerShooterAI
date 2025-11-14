@@ -3,6 +3,9 @@ Platformer shooter environment for training RL agents
 
 ![plot](./preview.png)
 
+The game:
+https://swingshuffle.itch.io/deathmatchai
+
 Observation: GridSensor2D (x,y,tags) and Vectorized in-game data
 
 Action space: move-x-y, jump, aim, switch weapon
