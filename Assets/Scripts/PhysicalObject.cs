@@ -72,7 +72,7 @@ public class PhysicalObject : MonoBehaviour
 
         if (jumpPressed && isGrounded && Time.time - lastJumpTime > jumpCooldown)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
             rb.sharedMaterial = noFrictionMaterial;
         }
@@ -80,20 +80,20 @@ public class PhysicalObject : MonoBehaviour
         // In the air
         if (!isGrounded)
         {
-            rb.velocity = new Vector2(velocity.x, rb.velocity.y);
+            rb.linearVelocity = new Vector2(velocity.x, rb.linearVelocity.y);
         }
 
         // Grounded slope
         if (isGrounded && moveDirection != Vector2.right)
         {
             Vector2 projectedVelocity = velocity.x * moveDirection.normalized;
-            rb.velocity = new Vector2(projectedVelocity.x, projectedVelocity.y);
+            rb.linearVelocity = new Vector2(projectedVelocity.x, projectedVelocity.y);
         }
 
         // Grounded
         if (isGrounded && moveDirection == Vector2.right)
         {
-            rb.velocity = new Vector2(velocity.x, rb.velocity.y);
+            rb.linearVelocity = new Vector2(velocity.x, rb.linearVelocity.y);
         }
     }
 
@@ -155,7 +155,7 @@ public class PhysicalObject : MonoBehaviour
 
     public void Reset()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         moveInput = Vector2.zero;
     }
 
@@ -182,7 +182,7 @@ public class PhysicalObject : MonoBehaviour
         Gizmos.DrawLine(rb.position, rb.position + groundNormal.normalized);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(rb.position, rb.position + rb.velocity);
+        Gizmos.DrawLine(rb.position, rb.position + rb.linearVelocity);
 
         Gizmos.color = isGrounded ? Color.yellow : Color.red;
         Vector2 groundCheckPos = (Vector2)collider.bounds.center + Vector2.down * collider.bounds.extents.y;

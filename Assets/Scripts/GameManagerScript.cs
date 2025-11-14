@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
+using Unity.Cinemachine;
+using Unity.InferenceEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Policies;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private GameObject botPrefab;
     [SerializeField] private InputActionAsset inputActions;
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private CinemachineVirtualCamera cinemachine;
+    [SerializeField] private CinemachineCamera cinemachine;
     [SerializeField] private PlayerStatsUI playerStatsUI;
     [SerializeField] private bool createPlayer;
     [SerializeField] private int teamSize = 1;
@@ -29,6 +30,7 @@ public class GameManagerScript : MonoBehaviour
     int[] teamScores = new int[2];
     [SerializeField] private GameStatsUI gameStatsUI;
     [SerializeField] private int roundTime = 0;
+    [SerializeField] private List<ModelAsset> botModels = new List<ModelAsset>();
     
     private void Awake()
     {
@@ -74,6 +76,7 @@ public class GameManagerScript : MonoBehaviour
                 else
                 {
                     botPrefab.GetComponent<BehaviorParameters>().TeamId = i;
+                    botPrefab.GetComponent<BehaviorParameters>().Model = botModels[i];
                     botPrefab.GetComponent<CharacterStatus>().TeamId = i;
                     GameObject character = Instantiate(botPrefab, teamSpawnPoints[i].position, Quaternion.identity);
                     character.name = $"Player_{i}_{j}";

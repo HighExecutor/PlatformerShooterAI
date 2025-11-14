@@ -20,7 +20,7 @@ public class ProjectileScript : MonoBehaviour
     {
         collider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 
     // Update is called once per frame

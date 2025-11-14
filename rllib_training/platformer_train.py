@@ -22,9 +22,9 @@ args.stop_iters = 999999
 args.stop_timesteps = 999999999
 args.stop_reward = 9999.0
 args.framework = "torch"
-args.num_workers = 4 if not local_mode else 0
-args.no_graphics = True
-args.time_scale = 20
+args.num_workers = 2 if not local_mode else 0
+args.no_graphics = False
+args.time_scale = 2
 batch_size = 4048*2
 
 policies, policy_mapping_fn = PlatformerAgent.get_policy_configs_for_game("PlatformerAgent")
@@ -89,7 +89,7 @@ tune.run(
     checkpoint_freq=100,
     checkpoint_at_end=True,
     storage_path=result_dir,
-    # restore="E:\wspace\\rl_tutorial\\rllib_results_nodrag\PPO_2025-02-21_10-09-39\PPO_SpaceScalEnv_94920_00000_0_2025-02-21_10-09-39\checkpoint_000028"
+    # restore="./results/PPO_2025-11-13_00-58-46/PPO_PlatformerAgent_86a39_00000_0_2025-11-13_00-58-46/checkpoint_000004"
 )
 
 ray.shutdown()

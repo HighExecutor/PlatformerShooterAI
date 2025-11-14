@@ -5,14 +5,14 @@ from gymnasium.spaces import Box, MultiDiscrete, Tuple as TupleSpace
 from typing import Callable, Optional, Tuple, List, Dict
 
 from ray.rllib.env.multi_agent_env import MultiAgentEnv
-from ray.rllib.env.apis.task_settable_env import TaskSettableEnv
+# from ray.rllib.env.apis.task_settable_env import TaskSettableEnv
 from ray.rllib.policy.policy import PolicySpec
 from ray.rllib.utils.typing import MultiAgentDict, PolicyID, AgentID
 from mlagents_envs.base_env import ActionTuple
 from mlagents_envs.side_channel.environment_parameters_channel import EnvironmentParametersChannel
 
 
-class PlatformerAgent(MultiAgentEnv, TaskSettableEnv):
+class PlatformerAgent(MultiAgentEnv):
     # Default base port when connecting directly to the Editor
     _BASE_PORT_EDITOR = 5004
     # Default base port when connecting to a compiled environment

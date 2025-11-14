@@ -1,12 +1,12 @@
 from typing import Dict, Callable
-from patformer_env import SpaceScalEnv
+from patformer_env import PlatformerAgent
 from ray.rllib.env.wrappers.unity3d_env import Unity3DEnv
 
 
 def register_envs(experiment_config):
     from ray import tune
-    if experiment_config["config"]["env"] == "SpaceScalEnv":
-        env_class = SpaceScalEnv
+    if experiment_config["config"]["env"] == "PlatformerAgent":
+        env_class = PlatformerAgent
     else:
         env_class = Unity3DEnv
     tune.register_env(

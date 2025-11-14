@@ -91,8 +91,8 @@ public class GridSensor2DBase : ISensor
         {
             if (!IsDataNormalized() && value == SensorCompressionType.PNG)
             {
-                Debug.LogWarning($"Compression type {value} is only supported with normalized data. " +
-                                 "The sensor will not compress the data.");
+                // Debug.LogWarning($"Compression type {value} is only supported with normalized data. " +
+                //                  "The sensor will not compress the data.");
                 return;
             }
 
@@ -240,8 +240,8 @@ public class GridSensor2DBase : ISensor
             {
                 dataBuffer[1] = 1;
                 Rigidbody2D rb = detectedObject.GetComponent<Rigidbody2D>();
-                dataBuffer[2] = rb.velocity.x / 10f;
-                dataBuffer[3] = rb.velocity.y / 10f;
+                dataBuffer[2] = rb.linearVelocity.x / 10f;
+                dataBuffer[3] = rb.linearVelocity.y / 10f;
             }
         }
         if (tagIndex == 2)
@@ -251,8 +251,8 @@ public class GridSensor2DBase : ISensor
             {
                 dataBuffer[4] = 1;
                 Rigidbody2D rb = detectedObject.GetComponent<Rigidbody2D>();
-                dataBuffer[5] = rb.velocity.x / 20f;
-                dataBuffer[6] = rb.velocity.y / 20f;
+                dataBuffer[5] = rb.linearVelocity.x / 20f;
+                dataBuffer[6] = rb.linearVelocity.y / 20f;
             }
         }
 
