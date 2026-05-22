@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: GridSensor
   m_CellScale: {x: 0.7, y: 1, z: 0.7}
-  m_GridSize: {x: 24, y: 1, z: 24}
+  m_GridSize: {x: 16, y: 1, z: 16}
   m_RotateWithAgent: 1
   m_AgentGameObject: {fileID: 4431225401310861089}
   m_DetectableTags:

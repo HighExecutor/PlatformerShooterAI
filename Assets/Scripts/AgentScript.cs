@@ -35,7 +35,7 @@ public class AgentScript : Agent
     {
         character.OnTakeDamage += (dmg) => AddReward(-0.1f * dmg, "TakeDamage");
         character.OnDeath += OnDeath;
-        character.OnMakeDamage += (dmg, lasthit) => OnMakeDamage(dmg, lasthit);
+        character.OnMakeDamage += (dmg, lasthit, enemyHit) => OnMakeDamage(dmg, lasthit, enemyHit);
         character.OnLoot += (points) => OnLoot(points * 0.01f);
     }
 
@@ -51,13 +51,20 @@ public class AgentScript : Agent
         // EndEpisode();
     }
 
-    void OnMakeDamage(float damage, bool lastHit)
+    void OnMakeDamage(float damage, bool lastHit, bool enemyHit)
     {
-        AddReward(0.4f * damage, "MakeDamage");
+        float value = 0f;
+        value = 0.2f * damage;
         if (lastHit)
         {
-            AddReward(4f * damage, "KillEnemy");
+            value = 2f;
         }
+
+        if (!enemyHit)
+        {
+            value *= -1;
+        }
+        AddReward(value, "Make damage");
     }
 
     void OnLoot(float points)

@@ -28,7 +28,7 @@ public class NailgunWeaponScript : WeaponScript
                         if (hitCharacter.TeamId != character.TeamId)
                         {
                             bool lastHit = hitCharacter.TakeDamage(projDamage);
-                            character.MakeDamage(projDamage, lastHit);
+                            character.MakeDamage(projDamage, lastHit, hitCharacter.TeamId);
                         }
                     }
                     Instantiate(hitEffect, hit.point, Quaternion.identity);

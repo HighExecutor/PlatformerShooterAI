@@ -23,8 +23,8 @@ args.stop_timesteps = 999999999
 args.stop_reward = 9999.0
 args.framework = "torch"
 args.num_workers = 2 if not local_mode else 0
-args.no_graphics = False
-args.time_scale = 2
+args.no_graphics = True
+args.time_scale = 20
 batch_size = 4048*2
 
 policies, policy_mapping_fn = PlatformerAgent.get_policy_configs_for_game("PlatformerAgent")
@@ -63,9 +63,9 @@ config = (
         clip_param=0.2,
         entropy_coeff=0.001,
         model={
-            "fcnet_hiddens": [128],
+            "fcnet_hiddens": [256, 128],
             "vf_share_layers": True,
-            "conv_filters": [[16, [3, 3], 1], [16, [3, 3], 1]],
+            "conv_filters": [[16, [3, 3], 1], [32, [3, 3], 1],[32, [3, 3], 1]],
             "custom_model": CustomVisionNetwork,
             "lstm_cell_size": 32,
         },

@@ -29,7 +29,7 @@ public class CharacterStatus : MonoBehaviour
     
     public event Action<float> OnTakeDamage;
     public event Action OnDeath;
-    public event Action<float, bool> OnMakeDamage;
+    public event Action<float, bool, bool> OnMakeDamage;
     public event Action<float> OnLoot;
     
     public int TeamId
@@ -109,10 +109,10 @@ public class CharacterStatus : MonoBehaviour
         gameManager.RegisterDeath(this);
     }
 
-    public void MakeDamage(float damage, bool lastHit)
+    public void MakeDamage(float damage, bool lastHit, int targetTeamId)
     {
         Debug.Log($"Make damage: {damage}");
-        OnMakeDamage?.Invoke(damage, lastHit);
+        OnMakeDamage?.Invoke(damage, lastHit, targetTeamId != teamId);
     }
 
     public WeaponManagerScript GetWeapon()

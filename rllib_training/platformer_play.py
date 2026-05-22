@@ -25,7 +25,8 @@ tune.register_env(
 
 base_dir = "results\\"
 # checkpoint_path = "<exp_series>\\<PPO>\\<run_name>\<checkpoint_xxxxxx>"
-checkpoint_path = "PPO_2025-11-13_00-58-46/PPO_PlatformerAgent_86a39_00000_0_2025-11-13_00-58-46/checkpoint_000000"
+# checkpoint_path = "PPO_2025-11-13_00-58-46/PPO_PlatformerAgent_86a39_00000_0_2025-11-13_00-58-46/checkpoint_000000"
+checkpoint_path = "E:\Projects\hedgehogs\\rllib_training\\results\PPO_2025-11-19_17-19-43\PPO_PlatformerAgent_8eec8_00000_0_2025-11-19_17-19-43\checkpoint_000000"
 checkpoint_path = os.path.join(base_dir, checkpoint_path)
 
 exp_config = read_config(checkpoint_path)['config']

@@ -29,7 +29,7 @@ public class RocketProjectileScript : ProjectileScript
                 {
                     float explodeDamage = damage * (1 - hitDistance / explodeRadius);
                     bool lastHit = damageable.TakeDamage(explodeDamage);
-                    sourceCharacter.MakeDamage(explodeDamage, lastHit);
+                    sourceCharacter.MakeDamage(explodeDamage, lastHit, damageable.TeamId);
                 }
             }
         }

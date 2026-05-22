@@ -217,7 +217,7 @@ class PlatformerAgent(MultiAgentEnv):
         # }
         obs_spaces = {
             "PlatformerAgent": TupleSpace([
-                Box(low=-10.0, high=10.0, shape=(24, 24, 8)),
+                Box(low=-10.0, high=10.0, shape=(16, 16, 8)),
                 Box(float("-inf"), float("inf"), (10,)),
             ])
         }

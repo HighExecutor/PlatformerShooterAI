@@ -42,7 +42,7 @@ public class ProjectileScript : MonoBehaviour
             if (character.TeamId != teamId)
             {
                 bool lastHit = character.TakeDamage(damage);
-                sourceCharacter.MakeDamage(damage, lastHit);
+                sourceCharacter.MakeDamage(damage, lastHit, character.TeamId);
             }
             DestroyProjectile();
         } else if (col.CompareTag("Floor"))
